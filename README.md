@@ -1,6 +1,6 @@
-<h2 align="center" style="border-bottom:none;">
-Reasoning Up the Instruction Ladder for Controllable Language Models
-</h2>
+<h1 align="center" style="border-bottom:none;">
+Reasoning Up the Instruction Ladder <br> for Controllable Language Models
+</h1>
 <p align="center">
     <img src="figures/asimov.png" width="600"/>
 <p>
