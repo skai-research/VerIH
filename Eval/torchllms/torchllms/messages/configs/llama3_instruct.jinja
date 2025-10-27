@@ -1,0 +1,29 @@
+{%- if messages[0]["role"] == "system" %}
+    {%- set system_message = messages[0]["content"] %}
+    {%- set loop_messages = messages[1:] %}
+{%- else %}
+    {%- set loop_messages = messages %}
+{%- endif %}
+
+{{- bos_token }}
+
+{%- if system_message is defined %}
+    {{- "<|start_header_id|>system<|end_header_id|>\n\n" + system_message.strip() + "<|eot_id|>" }}
+{%- endif %}
+
+{%- for message in loop_messages %}
+    {%- set content = message["content"].strip() %}
+    {%- if message["role"] == "user" %}
+        {{- "<|start_header_id|>user<|end_header_id|>\n\n" + content + "<|eot_id|>" }}
+    {%- elif message["role"] == "assistant" %}
+        {{- "<|start_header_id|>assistant<|end_header_id|>\n\n" + content + "<|eot_id|>" }}
+    {%- elif message["role"] == "tool" %}
+        {{- "<|start_header_id|>ipython<|end_header_id|>\n\n" + content + "<|eot_id|>" }}
+    {%- else %}
+        {{- raise_exception("Unknown message role: " + message["role"]) }}
+    {%- endif %}
+{%- endfor %}
+
+{%- if add_generation_prompt %}
+    {{- "<|start_header_id|>assistant<|end_header_id|>\n\n" }}
+{%- endif %}

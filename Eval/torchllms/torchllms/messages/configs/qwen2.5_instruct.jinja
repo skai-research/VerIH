@@ -1,0 +1,27 @@
+{%- if messages[0]["role"] == "system" %}
+    {%- set system_message = messages[0]["content"] %}
+    {%- set loop_messages = messages[1:] %}
+{%- else %}
+    {%- set loop_messages = messages %}
+{%- endif %}
+
+{%- if system_message is defined %}
+    {{- "<|im_start|>system<|im_start|>\n\n" + system_message.strip() + "<|im_end|>" }}
+{%- endif %}
+
+{%- for message in loop_messages %}
+    {%- set content = message["content"].strip() %}
+    {%- if message["role"] == "user" %}
+        {{- "<|im_start|>user<|im_start|>\n\n" + content + "<|im_end|>" }}
+    {%- elif message["role"] == "assistant" %}
+        {{- "<|im_start|>assistant<|im_start|>\n\n" + content + "<|im_end|>" }}
+    {%- elif message["role"] == "tool" %}
+        {{- "<|im_start|>ipython<|im_start|>\n\n" + content + "<|im_end|>" }}
+    {%- else %}
+        {{- raise_exception("Unknown message role: " + message["role"]) }}
+    {%- endif %}
+{%- endfor %}
+
+{%- if add_generation_prompt %}
+    {{- "<|im_start|>assistant<|im_start|>\n\n" }}
+{%- endif %}

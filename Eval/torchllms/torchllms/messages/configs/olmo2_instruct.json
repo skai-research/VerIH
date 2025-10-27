@@ -1,0 +1,190 @@
+{
+  "add_prefix_space": false,
+  "added_tokens_decoder": {
+    "100256": {
+      "content": "<|extra_id_0|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "100257": {
+      "content": "<|endoftext|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "100258": {
+      "content": "<|fim_prefix|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "100259": {
+      "content": "<|fim_middle|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "100260": {
+      "content": "<|fim_suffix|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "100261": {
+      "content": "|||PHONE_NUMBER|||",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "100262": {
+      "content": "|||EMAIL_ADDRESS|||",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "100263": {
+      "content": "|||IP_ADDRESS|||",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "100264": {
+      "content": "<|im_start|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "100265": {
+      "content": "<|im_end|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "100266": {
+      "content": "<|extra_id_1|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "100267": {
+      "content": "<|extra_id_2|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "100268": {
+      "content": "<|extra_id_3|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "100269": {
+      "content": "<|extra_id_4|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "100270": {
+      "content": "<|extra_id_5|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "100271": {
+      "content": "<|extra_id_6|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "100272": {
+      "content": "<|extra_id_7|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "100273": {
+      "content": "<|extra_id_8|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "100274": {
+      "content": "<|extra_id_9|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "100275": {
+      "content": "<|extra_id_10|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": false
+    },
+    "100276": {
+      "content": "<|endofprompt|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "100277": {
+      "content": "<|pad|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    }
+  },
+  "bos_token": "<|endoftext|>",
+  "clean_up_tokenization_spaces": false,
+  "eos_token": "<|endoftext|>",
+  "extra_special_tokens": {},
+  "model_max_length": 1000000000000000019884624838656,
+  "pad_token": "<|pad|>",
+  "tokenizer_class": "GPT2Tokenizer",
+  "unk_token": "<|endoftext|>",
+  "chat_template": "{%- if messages[0][\"role\"] == \"system\" %}\n    {%- set system_message = messages[0][\"content\"] %}\n    {%- set loop_messages = messages[1:] %}\n{%- else %}\n    {%- set loop_messages = messages %}\n{%- endif %}\n\n{{- bos_token }}\n\n{%- if system_message is defined %}\n    {{- \"<|system|>\\n\" + system_message.strip() + \"<|endoftext|>\" }}\n{%- endif %}\n\n{%- for message in loop_messages %}\n    {%- set content = message[\"content\"].strip() %}\n    {%- if message[\"role\"] == \"user\" %}\n        {{- \"<|user|>\\n\" + content + \"<|endoftext|>\" }}\n    {%- elif message[\"role\"] == \"assistant\" %}\n        {{- \"<|assistant|>\\n\" + content + \"<|endoftext|>\" }}\n    {%- elif message[\"role\"] == \"tool\" %}\n        {{- \"<|tool|>\\n\" + content + \"<|endoftext|>\" }}\n    {%- else %}\n        {{- raise_exception(\"Unknown message role: \" + message[\"role\"]) }}\n    {%- endif %}\n{%- endfor %}\n\n{%- if add_generation_prompt %}\n    {{- \"<|assistant|>\\n\" }}\n{%- endif %}"
+}

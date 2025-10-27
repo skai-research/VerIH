@@ -1,0 +1,14 @@
+# <|endoftext|>
+bos: [100257]      
+# '<|system|>\n'
+system_start: [27, 91, 9125, 91, 397]
+system_end: [100257]
+# '<|user|>\n'
+user_start: [27, 91, 882, 91, 397]
+user_end: [100257]
+# '<|assistant|>\n'
+assistant_start: [27, 91, 78191, 91, 397]
+assistant_end: [100257]
+# '<|tool|>\n'
+tool_start: [27, 91, 14506, 91, 397]
+tool_end: [100257]

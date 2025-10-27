@@ -1,0 +1,19 @@
+# This config implements a template similar to the JSON-based calling template introduced in Llama 3.1:
+# https://www.llama.com/docs/model-cards-and-prompt-formats/llama3_1/#json-based-tool-calling
+
+# <|begin_of_text|>
+bos: [128000]                                  
+# '<|start_header_id|>system<|end_header_id|>\n\n'
+system_start: [128006, 9125, 128007, 271]
+system_end: [128009]
+# '<|start_header_id|>user<|end_header_id|>\n\n'
+user_start: [128006, 882, 128007, 271]
+user_end: [128009]
+# '<|start_header_id|>assistant<|end_header_id|>\n\n'
+assistant_start: [128006, 78191, 128007, 271]
+assistant_end: [128009]
+# '<|start_header_id|>ipython<|end_header_id|>\n\n'
+tool_start: [128006, 23799, 4690, 128007, 271]
+tool_end: [128009]
+
+strip_whitespace: true
