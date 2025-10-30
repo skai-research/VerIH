@@ -52,7 +52,7 @@ pip install -e evals/safety-eval/utils
 ```
 export MODEL_NAME="Qwen3-8B"
 # Use RL training ckpt or your own model path
-export MODEL_PATH="$HOME/VerIH/Qwen3-8B-GRPO-01R-2048-verih/global_step_600/actor/huggingface" 
+export MODEL_PATH="$HOME/VerIH/RLVR/Qwen3-8B-GRPO-01R-2048-verih/global_step_600/actor/huggingface" 
 
 export TEST_MODE="CoTSysHint"
 sh run_general.sh
