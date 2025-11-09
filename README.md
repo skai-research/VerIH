@@ -19,6 +19,7 @@ conda activate verih
 git clone https://github.com/skai-research/VerIH
 cd VerIH/RLVR
 pip install -r requirements.txt
+pip install flash_attn==2.8.0.post2
 pip install -e .
 ```
 ## RL Training Qwen3-8B with VerIH
