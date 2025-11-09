@@ -13,6 +13,8 @@ Reasoning Up the Instruction Ladder <br> for Controllable Language Models
 # Training 
 ## Setup
 ```angular2html
+# if you are using cluster, set cuda to 11.8.0 by
+# module load cuda/11.8.0
 conda create -n verih python=3.10
 conda activate verih
 
