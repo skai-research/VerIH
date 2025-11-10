@@ -5,11 +5,10 @@ Reasoning Up the Instruction Ladder <br> for Controllable Language Models
     <img src="figures/asimov.png" width="600"/>
 <p>
 <p align="center">
-    <a href=""><img src="https://img.shields.io/badge/📝-Paper-blue"></a>
+    <a href="https://arxiv.org/abs/2511.04694"><img src="https://img.shields.io/badge/📝-Paper-blue"></a>
     <a href="https://github.com/skai-research/VerIH"><img src="https://img.shields.io/badge/🔗-Code-red"></a>
 </p>
 
-## [TODO] Paper link & Cite
 # Training 
 ## Setup
 ```angular2html
@@ -72,6 +71,14 @@ sh run_safety.sh
 
 # Citation
 ```angular2html
-
+@misc{zheng2025reasoninginstructionladdercontrollable,
+      title={Reasoning Up the Instruction Ladder for Controllable Language Models}, 
+      author={Zishuo Zheng and Vidhisha Balachandran and Chan Young Park and Faeze Brahman and Sachin Kumar},
+      year={2025},
+      eprint={2511.04694},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2511.04694}, 
+}
 ```
 
