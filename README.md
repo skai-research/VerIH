@@ -4,6 +4,9 @@ Reasoning Up the Instruction Ladder <br> for Controllable Language Models
 <p align="center">
     <img src="figures/asimov.png" width="600"/>
 <p>
+<p> Our work provide a simple recipe that enables reasoning for instruction hierarchy on LLMs. Before thinking about how to solve a task, LLMs first think whether there is a conflict between system prompt and user prompt. This ability allows steering models' behavior by simply updating the system prompt.
+<p> Using safety as a downstream applicaiton, reasoning for instruction hierarchy generalize to the safety tasks out of the post-training domain, avoiding expensive data collection, annotation, and LLM-as-Judge during RL training, but still improve the safety performance significantly.<p>
+
 <p align="center">
     <a href="https://arxiv.org/abs/2511.04694"><img src="https://img.shields.io/badge/📝-Paper-blue"></a>
     <a href="https://github.com/skai-research/VerIH/blob/main/figures/Poster%20ACL.pdf"><img src="https://img.shields.io/badge/🔗-Poster-red"></a>
