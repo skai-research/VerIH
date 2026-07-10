@@ -6,7 +6,7 @@ Reasoning Up the Instruction Ladder <br> for Controllable Language Models
 <p>
 <p align="center">
     <a href="https://arxiv.org/abs/2511.04694"><img src="https://img.shields.io/badge/📝-Paper-blue"></a>
-    <a href="https://github.com/skai-research/VerIH"><img src="https://img.shields.io/badge/🔗-Code-red"></a>
+    <a href="https://github.com/skai-research/VerIH/blob/main/figures/Poster%20ACL.pdf"><img src="https://img.shields.io/badge/🔗-Poster-red"></a>
 </p>
 
 # Use Finetined Checkpoint Directly
@@ -75,14 +75,12 @@ sh run_safety.sh
 
 # Citation
 ```angular2html
-@misc{zheng2025reasoninginstructionladdercontrollable,
-      title={Reasoning Up the Instruction Ladder for Controllable Language Models}, 
-      author={Zishuo Zheng and Vidhisha Balachandran and Chan Young Park and Faeze Brahman and Sachin Kumar},
-      year={2025},
-      eprint={2511.04694},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2511.04694}, 
+@inproceedings{zheng2026reasoning,
+  title={Reasoning Up the Instruction Ladder for Controllable Language Models},
+  author={Zheng, Zishuo and Balachandran, Vidhisha and Park, Chan Young and Brahman, Faeze and Kumar, Sachin},
+  booktitle={Findings of the Association for Computational Linguistics: ACL 2026},
+  pages={39332--39354},
+  year={2026}
 }
 ```
 
