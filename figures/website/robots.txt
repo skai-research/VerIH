@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://verih-instruction-hierarchy.stable-dove-7587.chatgpt.site/sitemap.xml

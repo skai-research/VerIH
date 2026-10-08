@@ -1,1 +1,125 @@
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VerIH: Instruction Hierarchy Reasoning with RLVR | ACL 2026</title>
+<meta name="description" content="VerIH trains LLMs to resolve conflicting system and user instructions with verifiable rewards. Explore the ACL 2026 paper, benchmark results, code, and Qwen3-8B checkpoint.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="canonical" href="https://verih-instruction-hierarchy.stable-dove-7587.chatgpt.site/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="VerIH — Reasoning for Instruction Hierarchy">
+<meta property="og:description" content="Learning to prioritize instructions with verifiable rewards. Research, results, and resources from Findings of ACL 2026.">
+<meta property="og:url" content="https://verih-instruction-hierarchy.stable-dove-7587.chatgpt.site/">
+<meta name="citation_title" content="Reasoning Up the Instruction Ladder for Controllable Language Models">
+<meta name="citation_author" content="Zishuo Zheng">
+<meta name="citation_author" content="Vidhisha Balachandran">
+<meta name="citation_author" content="Chan Young Park">
+<meta name="citation_author" content="Faeze Brahman">
+<meta name="citation_author" content="Sachin Kumar">
+<meta name="citation_publication_date" content="2026/07">
+<meta name="citation_conference_title" content="Findings of the Association for Computational Linguistics: ACL 2026">
+<meta name="citation_doi" content="10.18653/v1/2026.findings-acl.1960">
+<meta name="citation_pdf_url" content="https://aclanthology.org/2026.findings-acl.1960.pdf">
+<meta name="citation_firstpage" content="39332"><meta name="citation_lastpage" content="39354">
+<meta name="theme-color" content="#155d46">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23155d46'/%3E%3Cpath d='M8 24h5v-5h5v-5h6M9 8v16M23 8v16' fill='none' stroke='%23c5e975' stroke-width='2.5'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://verih-instruction-hierarchy.stable-dove-7587.chatgpt.site/#webpage","url":"https://verih-instruction-hierarchy.stable-dove-7587.chatgpt.site/","name":"VerIH: Instruction Hierarchy Reasoning with RLVR","description":"Research project page for Reasoning Up the Instruction Ladder for Controllable Language Models.","inLanguage":"en","mainEntity":{"@id":"https://doi.org/10.18653/v1/2026.findings-acl.1960"},"dateModified":"2026-10-07"},{"@type":"ScholarlyArticle","@id":"https://doi.org/10.18653/v1/2026.findings-acl.1960","name":"Reasoning Up the Instruction Ladder for Controllable Language Models","headline":"Reasoning Up the Instruction Ladder for Controllable Language Models","author":[{"@type":"Person","name":"Zishuo Zheng","affiliation":{"@type":"Organization","name":"The Ohio State University"}},{"@type":"Person","name":"Vidhisha Balachandran","affiliation":{"@type":"Organization","name":"Microsoft Research"}},{"@type":"Person","name":"Chan Young Park","affiliation":{"@type":"Organization","name":"Microsoft Research"}},{"@type":"Person","name":"Faeze Brahman","affiliation":{"@type":"Organization","name":"Allen Institute for AI"}},{"@type":"Person","name":"Sachin Kumar","affiliation":{"@type":"Organization","name":"The Ohio State University"}}],"datePublished":"2026-07","identifier":"10.18653/v1/2026.findings-acl.1960","url":"https://aclanthology.org/2026.findings-acl.1960/","sameAs":"https://arxiv.org/abs/2511.04694","isPartOf":{"@type":"PublicationVolume","name":"Findings of the Association for Computational Linguistics: ACL 2026"},"publisher":{"@type":"Organization","name":"Association for Computational Linguistics"},"pageStart":"39332","pageEnd":"39354","keywords":["instruction hierarchy","instruction conflict resolution","reinforcement learning with verifiable rewards","RLVR","LLM controllability","prompt injection","VerIH"],"encoding":{"@type":"MediaObject","contentUrl":"https://aclanthology.org/2026.findings-acl.1960.pdf","encodingFormat":"application/pdf"}},{"@type":"SoftwareSourceCode","name":"VerIH","codeRepository":"https://github.com/skai-research/VerIH","programmingLanguage":"Python","about":{"@id":"https://doi.org/10.18653/v1/2026.findings-acl.1960"}}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar"><nav class="wrap nav" aria-label="Main navigation">
+<a class="brand" href="#main" aria-label="VerIH home"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#155d46"/><path d="M8 24h5v-5h5v-5h6M9 8v16M23 8v16" fill="none" stroke="#c5e975" stroke-width="2"/></svg>VerIH</a>
+<div class="navlinks"><a class="optional" href="#method">Method</a><a href="#results">Results</a><a class="optional" href="#questions">FAQ</a><a href="#cite">Cite</a><a class="nav-paper" href="https://arxiv.org/abs/2511.04694">Paper</a></div>
+</nav></header>
+<main id="main">
+<section class="hero"><div class="wrap hero-grid"><div>
+<p class="eyebrow"><span></span>Findings of ACL 2026</p>
+<h1>Reasoning Up the <em>Instruction Ladder</em> for Controllable Language Models</h1>
+<p class="lead"><strong>VerIH trains language models to reason about instruction hierarchy.</strong> Reinforcement learning with verifiable rewards (RLVR) teaches models to resolve conflicts between system and user instructions, with transfer to jailbreak and prompt-injection evaluations.</p>
+<p class="authors">Zishuo Zheng<sup>1</sup> · Vidhisha Balachandran<sup>2</sup> · Chan Young Park<sup>2</sup><br>Faeze Brahman<sup>3</sup> · Sachin Kumar<sup>1</sup></p>
+<p class="affiliations"><sup>1</sup> The Ohio State University &nbsp; <sup>2</sup> Microsoft Research &nbsp; <sup>3</sup> Allen Institute for AI</p>
+<div class="actions"><a class="button primary" href="https://aclanthology.org/2026.findings-acl.1960.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/></svg>Read the paper</a><a class="button" href="https://github.com/skai-research/VerIH">Code &amp; data pipeline</a><a class="button" href="https://huggingface.co/TheToad/Qwen3-8B-VerIH/tree/main">Model weights</a></div>
+</div>
+<figure class="hierarchy" style="margin:0" aria-label="Illustrative instruction conflict: the system requests lowercase text and the user requests uppercase text. The expected answer follows the system instruction.">
+<div class="diagram-head"><span>INSTRUCTION PRIORITY</span><span>01 / 02</span></div>
+<div class="layer"><div class="role"><span>SYSTEM</span><span>HIGHER PRIORITY</span></div><p>Write all responses in lowercase.</p></div>
+<div class="layer user"><div class="role"><span>USER</span><span>LOWER PRIORITY</span></div><p>Say “Hello” in UPPERCASE.</p></div>
+<div class="decision"><b>Resolve the conflict.</b><br>Keep the task. Follow the system constraint.</div>
+<div class="answer"><span>EXPECTED ANSWER</span><code>hello</code></div>
+<figcaption class="diagram-note">Illustrative example, not a recorded model output.</figcaption>
+</figure></div></section>
+<div class="wrap"><div class="metric-strip" aria-label="Selected paper facts">
+<div class="metric"><div class="number">7,192</div><strong>Training examples</strong><p>24 constraint categories; equal aligned and conflicting shares. <a href="https://arxiv.org/html/2511.04694v5#S3">§3</a></p></div>
+<div class="metric"><div class="number">+22.87 <span class="unit">pp</span></div><strong>IHEval conflict accuracy</strong><p>Qwen3-4B: 34.34% to 57.21%, versus CoT + SysHint. <a href="https://arxiv.org/html/2511.04694v5#S4.T1">Table 1</a></p></div>
+<div class="metric"><div class="number">−22.80 <span class="unit">pp</span></div><strong>WildJailbreak attack success</strong><p>Qwen3-8B: 64.05% to 41.25%, versus CoT + SysHint + GuardRules. <a href="https://arxiv.org/html/2511.04694v5#S5.T3">Table 3</a></p></div>
+</div></div>
+<section class="section" id="method"><div class="wrap">
+<div class="section-top"><div><p class="section-label">01 / The method</p><h2>Learn which instructions<br>take precedence.</h2></div><p class="section-desc">Instruction hierarchy gives higher-priority directives precedence when instructions conflict. VerIH makes this prioritization a trainable reasoning task.</p></div>
+<div class="method-grid">
+<article class="method-step"><span class="step-number">01 — CONSTRUCT</span><h3>Aligned + conflicting prompts</h3><p>Retain system constraints and rewrite half of the user requests to introduce conflicts.</p><a href="https://arxiv.org/html/2511.04694v5#S3">Dataset construction · §3</a></article>
+<article class="method-step"><span class="step-number">02 — REASON</span><h3>Resolve before responding</h3><p>SysHint prompts the model to consider instruction priority before generating its answer.</p><a href="https://arxiv.org/html/2511.04694v5#S2">Instruction hierarchy reasoning · §2</a></article>
+<article class="method-step"><span class="step-number">03 — VERIFY</span><h3>Reward verifiable answers</h3><p>GRPO uses programmatic checks of the final answer to train instruction prioritization.</p><a href="https://arxiv.org/html/2511.04694v5#A3">Training setup · Appendix C</a></article>
+</div>
+<div class="dataset-band"><div><strong>VerIH is a training dataset.</strong><p>IHEval, IFEval, and IFBench are evaluation benchmarks.</p></div><div class="dataset-split" aria-label="50 percent aligned, 50 percent conflicting"><div class="splitbar"><span></span><span></span></div><div class="splitlabels"><span>50% ALIGNED</span><span>50% CONFLICTING</span></div></div></div>
+</div></section>
+<section class="section" id="results"><div class="wrap">
+<div class="section-top"><div><p class="section-label">02 / Measured results</p><h2>Stronger conflict resolution.<br>Across model sizes.</h2></div><p class="section-desc">Every comparison below uses the corresponding model before VerIH training with chain-of-thought reasoning and SysHint. Deltas are absolute percentage points (pp).</p></div>
+<figure class="results-panel" style="margin:0" aria-labelledby="chart-title">
+<div class="chart-top"><h3 id="chart-title">IHEval conflict accuracy (%)</h3><div class="legend"><span><i class="swatch"></i>CoT + SysHint</span><span><i class="swatch trained"></i>+ VerIH</span></div></div>
+<div class="chart" aria-hidden="true">
+<div class="chart-row"><div class="chart-label">Qwen3-4B</div><div class="tracks"><div class="bar" style="--value:34.34%">34.34</div><div class="bar after" style="--value:57.21%">57.21</div></div><div class="delta">+22.87<small>pp</small></div></div>
+<div class="chart-row"><div class="chart-label">Qwen3-8B</div><div class="tracks"><div class="bar" style="--value:46.48%">46.48</div><div class="bar after" style="--value:63.48%">63.48</div></div><div class="delta">+17.00<small>pp</small></div></div>
+<div class="chart-row"><div class="chart-label">Qwen3-14B</div><div class="tracks"><div class="bar" style="--value:47.83%">47.83</div><div class="bar after" style="--value:66.04%">66.04</div></div><div class="delta">+18.21<small>pp</small></div></div>
+<div class="chart-row"><div class="chart-label">Qwen3.6-35B-A3B<small>Mixture of experts</small></div><div class="tracks"><div class="bar" style="--value:90.96%">90.96</div><div class="bar after" style="--value:92.50%">92.50</div></div><div class="delta">+1.54<small>pp</small></div></div>
+<div class="chart-row"><div class="chart-label">Phi-4-mini-reasoning<small>Excludes tool-use tasks</small></div><div class="tracks"><div class="bar" style="--value:19.98%">19.98</div><div class="bar after" style="--value:38.28%">38.28</div></div><div class="delta">+18.30<small>pp</small></div></div>
+</div><div class="axis" aria-hidden="true"><span>0</span><span>25</span><span>50</span><span>75</span><span>100%</span></div>
+<figcaption class="source-note">Source: <a href="https://arxiv.org/html/2511.04694v5#S4.T1">arXiv v5, Table 1</a>. Higher is better. The exact values are provided in the accessible table below. Phi-4 excludes tool-use tasks and is not directly comparable to Qwen on the full benchmark.</figcaption>
+</figure>
+<div class="table-wrap"><table class="results-table"><caption>IHEval conflict accuracy: matched prompting comparison</caption><thead><tr><th scope="col">Model</th><th scope="col">CoT + SysHint</th><th scope="col">+ VerIH</th><th scope="col">Change (pp)</th></tr></thead><tbody>
+<tr><th scope="row">Qwen3-4B</th><td>34.34%</td><td>57.21%</td><td>+22.87</td></tr>
+<tr><th scope="row">Qwen3-8B</th><td>46.48%</td><td>63.48%</td><td>+17.00</td></tr>
+<tr><th scope="row">Qwen3-14B</th><td>47.83%</td><td>66.04%</td><td>+18.21</td></tr>
+<tr><th scope="row">Qwen3.6-35B-A3B</th><td>90.96%</td><td>92.50%</td><td>+1.54</td></tr>
+<tr><th scope="row">Phi-4-mini-reasoning*</th><td>19.98%</td><td>38.28%</td><td>+18.30</td></tr>
+</tbody></table></div><div class="table-actions"><a href="results.csv" download>Download selected results (CSV)</a><a href="https://arxiv.org/html/2511.04694v5#S4.T1">All benchmarks in Table 1</a></div>
+<p class="source-note">*Phi-4-mini-reasoning excludes tool-use tasks. Changes are calculated from the displayed table cells. They are not relative percentage improvements or confidence intervals.</p>
+</div></section>
+<section class="section transfer" id="safety"><div class="wrap">
+<div class="section-top"><div><p class="section-label">03 / Transfer to safety</p><h2>Safety as an instruction<br>conflict problem.</h2></div><p class="section-desc">VerIH adds no safety-specific examples during this post-training step. Safety evaluation supplies higher-priority GuardRules at inference time.</p></div>
+<div class="safety-grid"><div><h3>Qwen3-8B · WildJailbreak harmful ASR</h3><div class="safety-summary"><span class="safety-number safety-old">64.05%</span><span class="to">TO</span><span class="safety-number safety-new">41.25%</span></div><p>22.80 percentage points lower attack success rate, against the CoT + SysHint + GuardRules baseline.</p></div>
+<div><table class="safety-table"><caption class="sr-only">Qwen3-8B safety results from Table 3</caption><thead><tr><th scope="col">Metric</th><th scope="col">Baseline</th><th scope="col">+ VerIH</th></tr></thead><tbody><tr><th scope="row">HarmBench ASR ↓</th><td>2.81%</td><td>1.25%</td></tr><tr><th scope="row">TensorTrust inject ASR ↓</th><td>49.13%</td><td>32.58%</td></tr><tr><th scope="row">WildJailbreak benign ↑</th><td>99.20%</td><td>97.60%</td></tr></tbody></table></div></div>
+<p class="source-note">Source: <a href="https://arxiv.org/html/2511.04694v5#S5.T3">arXiv v5, Table 3</a>. Baseline: CoT + SysHint + GuardRules. Lower ASR is better; higher benign-response accuracy is better.</p>
+<p class="caveat"><strong>Scope matters.</strong> Safety gains vary by model and benchmark. Benign-response accuracy can decrease, and this training procedure does not guarantee resistance to prompt injection.</p>
+</div></section>
+<section class="section" id="questions"><div class="wrap">
+<div class="section-top"><div><p class="section-label">04 / Research questions</p><h2>What does VerIH establish?</h2></div><p class="section-desc">Definitions, practical implications, and boundaries of the reported evidence.</p></div>
+<div class="faq-grid">
+<article class="faq-item" id="what-is-verih"><h3>What is VerIH?</h3><p>A 7,192-example training dataset for instruction hierarchy reasoning. It combines aligned and conflicting system–user pairs with programmatically verifiable constraints. <a href="https://arxiv.org/html/2511.04694v5#S3">§3</a></p></article>
+<article class="faq-item" id="instruction-following-vs-hierarchy"><h3>How does instruction hierarchy differ from instruction following?</h3><p>Instruction following concerns satisfying requests. Instruction hierarchy additionally determines which request takes precedence when sources conflict. <a href="https://arxiv.org/html/2511.04694v5#S2">§2</a></p></article>
+<article class="faq-item" id="safety-training"><h3>Does VerIH require safety training data?</h3><p>This post-training dataset contains no safety-specific examples. That statement does not describe the base models’ earlier training. GuardRules are provided during safety evaluation. <a href="https://arxiv.org/html/2511.04694v5#S4.SS3">§4.3</a></p></article>
+<article class="faq-item" id="prompt-injection"><h3>Does instruction hierarchy training prevent prompt injection?</h3><p>The paper reports improvements on selected evaluations, not a prevention guarantee. Model differences and refusal trade-offs remain. <a href="https://arxiv.org/html/2511.04694v5#S5">§5</a></p></article>
+<article class="faq-item" id="policy-updates"><h3>Can policies change through the system prompt?</h3><p>The approach evaluates new higher-priority policies at inference time. Its results support policy transfer in the tested settings; arbitrary new policies remain unproven. <a href="https://arxiv.org/html/2511.04694v5#S6">§6</a></p></article>
+<article class="faq-item" id="training-vs-evaluation"><h3>Where can I reproduce the experiments?</h3><p>The repository includes training, dataset-generation, and evaluation instructions. A Qwen3-8B checkpoint is linked below. <a href="https://github.com/skai-research/VerIH">Repository</a></p></article>
+</div></div></section>
+<section class="section" id="resources"><div class="wrap"><div class="section-top"><div><p class="section-label">05 / Open resources</p><h2>Read. Reproduce. Build.</h2></div><p class="section-desc">Publication, implementation, and released model weights.</p></div>
+<div class="resources-grid"><a class="resource" href="https://aclanthology.org/2026.findings-acl.1960/"><span class="resource-kind">Publication</span><h3>ACL Anthology</h3><p>Published paper, PDF, and official citation.</p></a><a class="resource" href="https://github.com/skai-research/VerIH"><span class="resource-kind">Implementation</span><h3>VerIH on GitHub</h3><p>Training, data generation, and evaluation.</p></a><a class="resource" href="https://huggingface.co/TheToad/Qwen3-8B-VerIH/tree/main"><span class="resource-kind">Checkpoint</span><h3>Qwen3-8B + VerIH</h3><p>Released weights on Hugging Face.</p></a></div>
+</div></section>
+<section class="section" id="cite"><div class="wrap cite-grid"><div><p class="section-label">06 / Citation</p><h2>Cite the research.</h2><p>Zheng et al. · Findings of ACL 2026<br>Pages 39332–39354</p><p><a href="https://doi.org/10.18653/v1/2026.findings-acl.1960">DOI: 10.18653/v1/2026.findings-acl.1960</a></p><p class="status" id="copy-status" role="status" aria-live="polite"></p></div>
+<div class="citation-box"><div class="citation-toolbar"><span>BIBTEX</span><button id="copy-citation" type="button">Copy citation</button></div><pre id="bibtex" tabindex="0" aria-label="BibTeX citation">@inproceedings{zheng-etal-2026-reasoning,
+  title = {Reasoning Up the Instruction Ladder for Controllable Language Models},
+  author = {Zheng, Zishuo and Balachandran, Vidhisha and Park, Chan Young and Brahman, Faeze and Kumar, Sachin},
+  booktitle = {Findings of the Association for Computational Linguistics: ACL 2026},
+  year = {2026},
+  pages = {39332--39354},
+  doi = {10.18653/v1/2026.findings-acl.1960},
+  url = {https://aclanthology.org/2026.findings-acl.1960/}
+}</pre></div>
+</div></section>
+</main>
+<footer class="wrap footer"><div><p>VerIH · Reasoning for instruction hierarchy</p><p>This companion page summarizes the research. The published paper remains the authoritative record.</p><p><a href="https://arxiv.org/abs/2511.04694v5">arXiv v5</a> · <a href="https://aclanthology.org/2026.findings-acl.1960/">ACL Anthology</a> · <a href="https://github.com/skai-research/VerIH">GitHub</a></p></div><div class="version"><p>Paper revision: 01 Jul 2026</p><p>Page updated: 07 Oct 2026</p></div></footer>
+<script src="script.js" defer></script>
+</body></html>

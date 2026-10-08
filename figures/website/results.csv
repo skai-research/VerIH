@@ -1,0 +1,10 @@
+model,benchmark,metric,baseline_condition,baseline_percent,verih_percent,delta_percentage_points,source,note
+Qwen3-4B,IHEval conflict,accuracy,CoT + SysHint,34.34,57.21,22.87,https://arxiv.org/html/2511.04694v5#S4.T1,
+Qwen3-8B,IHEval conflict,accuracy,CoT + SysHint,46.48,63.48,17.00,https://arxiv.org/html/2511.04694v5#S4.T1,
+Qwen3-14B,IHEval conflict,accuracy,CoT + SysHint,47.83,66.04,18.21,https://arxiv.org/html/2511.04694v5#S4.T1,
+Qwen3.6-35B-A3B,IHEval conflict,accuracy,CoT + SysHint,90.96,92.50,1.54,https://arxiv.org/html/2511.04694v5#S4.T1,
+Phi-4-mini-reasoning,IHEval conflict,accuracy,CoT + SysHint,19.98,38.28,18.30,https://arxiv.org/html/2511.04694v5#S4.T1,Excludes tool-use tasks
+Qwen3-8B,WildJailbreak harmful,attack success rate,CoT + SysHint + GuardRules,64.05,41.25,-22.80,https://arxiv.org/html/2511.04694v5#S5.T3,Lower is better
+Qwen3-8B,HarmBench,attack success rate,CoT + SysHint + GuardRules,2.81,1.25,-1.56,https://arxiv.org/html/2511.04694v5#S5.T3,Lower is better
+Qwen3-8B,TensorTrust inject,attack success rate,CoT + SysHint + GuardRules,49.13,32.58,-16.55,https://arxiv.org/html/2511.04694v5#S5.T3,Lower is better
+Qwen3-8B,WildJailbreak benign,correct response rate,CoT + SysHint + GuardRules,99.20,97.60,-1.60,https://arxiv.org/html/2511.04694v5#S5.T3,Higher is better
